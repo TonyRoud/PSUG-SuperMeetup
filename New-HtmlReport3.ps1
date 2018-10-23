@@ -1,10 +1,12 @@
-Set-Location 'C:\Users\anthony.roud\OneDrive\Documents\PowerShell\PSUG\SuperMeetup'
+Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
+
+# Using module pshtmltable
 
 #get processes to work with
 $processes = Get-Process
 
 #Build HTML header
-$HTML = New-HTMLHead -title "Process details" #-cssPath 'stylesheet.css'
+$HTML = New-HTMLHead -title "Process details"
 
 #Add CPU time section with top 10 PrivateMemorySize processes.  This example does not highlight any particular cells
 $HTML += "<h3>Process Private Memory Size</h3>"
@@ -30,7 +32,7 @@ $HTML += "<h3>Process Handles</h3>"
 $HTML += $handleHTML
 
 #gather 20 events from the system log and pick out a few properties
-$events = (Get-WinEvent -LogName System -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level}) |
+$events = (Get-WinEvent -LogName System -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
     Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -First 10
 
 #Create the HTML table without alternating rows, colorize Warning and Error messages, highlighting the whole row.
