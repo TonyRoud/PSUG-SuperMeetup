@@ -58,7 +58,7 @@ table tr:hover {background-color: rgb(236, 234, 234);}
     color:rgb(255, 166, 0);
     background-color:rgb(255, 249, 223);
 }
-    </style>
+</style>
 "@
 
 $HTML += "<h1>Environment Health Report</h1><h3>$date</h3>"

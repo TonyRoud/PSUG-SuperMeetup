@@ -65,10 +65,6 @@ table tr td.yellow {
     color:rgb(255, 166, 0);
     background-color:rgb(255, 249, 223);
 }
-table tr td.blank {
-    border-top: 1px solid #ffffff;
-    border-left: 1px solid #ffffff;
-}
 </style>
 "@
 
