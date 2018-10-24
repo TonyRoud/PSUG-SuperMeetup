@@ -16,7 +16,7 @@ $HTML += "<h3>Process Private Memory Size</h3>"
 $HTML += New-HTMLTable -inputObject $($processes | Sort-Object PrivateMemorySize -Descending | Select-Object name, PrivateMemorySize -first 10)
 
 #Add Handles section with top 10 Handle usage.
-$handleHTML = New-HTMLTable -inputObject $($processes | Sort-Object handles -descending | Select-Object Name, Handles -first 10)
+$formatHTML = New-HTMLTable -inputObject $($processes | Sort-Object handles -descending | Select-Object Name, Handles -first 10)
 
 #build hash table with parameters for Add-HTMLTableColor.  Argument and AttrValue will be modified each time we run this.
 $params = @{
@@ -26,13 +26,13 @@ $params = @{
 }
 
 #Add yellow, orange and red shading
-$handleHTML = Add-HTMLTableColor -HTML $handleHTML -Argument 1500 -attrValue "background-color:#FFFF99;" @params
-$handleHTML = Add-HTMLTableColor -HTML $handleHTML -Argument 2000 -attrValue "background-color:#FFCC66;" @params
-$handleHTML = Add-HTMLTableColor -HTML $handleHTML -Argument 3000 -attrValue "background-color:#FFCC99;" @params
+$formatHTML = Add-HTMLTableColor -HTML $formatHTML -Argument 1500 -attrValue "background-color:#FFFF99;" @params
+$formatHTML = Add-HTMLTableColor -HTML $formatHTML -Argument 2000 -attrValue "background-color:#FFCC66;" @params
+$formatHTML = Add-HTMLTableColor -HTML $formatHTML -Argument 3000 -attrValue "background-color:#FFCC99;" @params
 
 #Add title and table
 $HTML += "<h3>Process Handles</h3>"
-$HTML += $handleHTML
+$HTML += $formatHTML
 
 #gather 20 events from the system log and pick out a few properties
 $events = (Get-WinEvent -LogName System -MaxEvents 500).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level}) |
