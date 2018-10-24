@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<title>Environment Health Report</title>
 <style>
 body {
     color:#333333;
@@ -25,162 +26,77 @@ p {
     text-align:center;
     font-size: 10pt;
 }
-#table {
+table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 80%;
-    align: center;
+    width: 70%;
+    margin-left:auto;
+    margin-right:auto;
 }
-#table th {
+table th {
     border: 1px solid #dddddd;
     font-weight:bold;
     color:#000000;
     background-color:#e9f2ff;
     padding: 8px;
 }
-#table tr td {
+table tr td {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
 }
-#table tr:hover {background-color: rgb(236, 234, 234);}
-#table tr td.red {
+table tr:hover {background-color: rgb(236, 234, 234);}
+table tr td.red {
     border: 1px solid #e4e4e4;
     font-weight:bold;
     text-align: center;
     color:rgb(255, 14, 14);
     background-color:rgb(253, 237, 237);
 }
-#table tr td.yellow {
+table tr td.yellow {
     font-weight:bold;
     text-align: center;
     color:rgb(255, 166, 0);
     background-color:rgb(255, 249, 223);
 }
-#table tr td.green {
-    text-align: center;
-    color:rgb(0, 61, 18);
-    background-color:rgb(219, 255, 230);
-}
-#table tr td.blank {
+table tr td.blank {
     border-top: 1px solid #ffffff;
     border-left: 1px solid #ffffff;
 }
 </style>
 </head><body>
-<h1>Environment Health Report</h1><h3>23 October 2018 20:48</h3><h2>Critical and Warning Events</h2>    <table id="table" align="center">
-    <tr>
-        <th>Time</th>
-        <th>ID</th>
-        <th>Level</th>
-        <th>Provider</th>
-        <th>Message</th>
-    </tr>    <tr>
-        <td>10/23/2018 20:02:43</td>
-        <td>36</td>
-        <td>Warning</td>
-        <td>Microsoft-Windows-Time-Service</td>
-        <td>The time service has not synchronized the system time for 86400 seconds because none of the time service providers provided a usable time stamp. The time service will not update the local system time until it is able to synchronize with a time source. If the local system is configured to act as a time server for clients, it will stop advertising as a time source to clients. The time service will continue to retry and sync time with its time sources. Check system event log for other W32time events for more details. Run 'w32tm /resync' to force an instant time synchronization.</td>
-    </tr>    <tr>
-        <td>10/23/2018 20:02:40</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 19:56:01</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 19:00:48</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 17:40:47</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 17:36:32</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 16:11:07</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 15:08:32</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 13:44:58</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr>    <tr>
-        <td>10/23/2018 13:39:01</td>
-        <td>36887</td>
-        <td>Error</td>
-        <td>Schannel</td>
-        <td>The following fatal alert was received: 40.</td>
-    </tr></table><h2>Process Usage</h2>    <table id="table" align="center">
-    <tr>
-        <th>Name</th>
-        <th>ProcessName</th>
-        <th>PrivateMemorySize</th>
-    </tr>    <tr>
-        <td>chrome</td>
-        <td>chrome</td>
-        <td>424570880</td>
-    </tr>    <tr>
-        <td>POWERPNT</td>
-        <td>POWERPNT</td>
-        <td>344489984</td>
-    </tr>    <tr>
-        <td>powershell</td>
-        <td>powershell</td>
-        <td>324984832</td>
-    </tr>    <tr>
-        <td>powershell</td>
-        <td>powershell</td>
-        <td>320438272</td>
-    </tr>    <tr>
-        <td>chrome</td>
-        <td>chrome</td>
-        <td>318148608</td>
-    </tr>    <tr>
-        <td>powershell</td>
-        <td>powershell</td>
-        <td>305242112</td>
-    </tr>    <tr>
-        <td>svchost</td>
-        <td>svchost</td>
-        <td>304623616</td>
-    </tr>    <tr>
-        <td>pwsh</td>
-        <td>pwsh</td>
-        <td>304521216</td>
-    </tr>    <tr>
-        <td>chrome</td>
-        <td>chrome</td>
-        <td>291958784</td>
-    </tr>    <tr>
-        <td>pwsh</td>
-        <td>pwsh</td>
-        <td>265883648</td>
-    </tr></table>
+<h1>Environment Health Report</h1><h3>24 October 2018 09:51</h3><h2>Critical and Warning Events</h2> <table> <colgroup><col/><col/><col/><col/><col/></colgroup> <tr><th>TimeCreated</th><th>Id</th><th>LevelDisplayName</th><th>ProviderName</th><th>Message</th></tr> <tr><td>24/10/2018 08:43:06</td><td>8194</td><td>Error</td><td>Group Policy Registry</td><td>The client-side extension could not apply user policy settings for &#39;Home &amp; Default Pages for IE {9FAEEF6B-7171-420A-B097-17E1A523F567}&#39; because it failed with error code &#39;0x80070041 Network access is denied.&#39; See trace file for more details.</td></tr> <tr><td>24/10/2018 08:43:06</td><td>8194</td><td>Error</td><td>Group Policy Drive Maps</td><td>The client-side extension could not apply user policy settings for &#39;Shares Mapped Drive {E0D2BD25-45CD-4428-BBC9-512D90AE6E29}&#39; because it failed with error code &#39;0x80070041 Network access is denied.&#39; See trace file for more details.</td></tr> <tr><td>24/10/2018 08:43:04</td><td>6</td><td>Error</td><td>Microsoft-Windows-CertificateServicesClient-AutoEnrollment</td><td>Automatic certificate enrollment for local system failed (0x800706ba) The RPC server is unavailable.
+.</td></tr> <tr><td>24/10/2018 08:43:04</td><td>13</td><td>Error</td><td>Microsoft-Windows-CertificateServicesClient-CertEnroll</td><td>Certificate enrollment for Local system failed to enroll for a Machine certificate with request ID N/A from I-A-V-GLACA.amorgroup.local\I-A-V-GLACA (The RPC server is unavailable. 0x800706ba (WIN32: 1722)).</td></tr> <tr><td>24/10/2018 08:42:52</td><td>10</td><td>Error</td><td>Microsoft-Windows-WMI</td><td>Event filter with query &quot;SELECT * FROM __InstanceModificationEvent WITHIN 60 WHERE TargetInstance ISA &quot;Win32_Processor&quot; AND TargetInstance.LoadPercentage &gt; 99&quot; could not be reactivated in namespace &quot;//./root/CIMV2&quot; because of error 0x80041003. Events cannot be delivered through this filter until the problem is corrected.</td></tr> <tr><td>24/10/2018 08:05:07</td><td>1530</td><td>Warning</td><td>Microsoft-Windows-User Profiles Service</td><td>Windows detected your registry file is still in use by other applications or services. The file will be unloaded now. The applications or services that hold your registry file may not function properly afterwards.  
+
+ DETAIL - 
+ 8 user registry handles leaked from \Registry\User\S-1-5-21-1891001166-591912374-1976076072-11671:
+Process 664 (\Device\HarddiskVolume1\Windows\System32\lsass.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671
+Process 664 (\Device\HarddiskVolume1\Windows\System32\lsass.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671
+Process 664 (\Device\HarddiskVolume1\Windows\System32\lsass.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671\Software\Microsoft\SystemCertificates\My
+Process 664 (\Device\HarddiskVolume1\Windows\System32\lsass.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671\Software\Microsoft\SystemCertificates\CA
+Process 1336 (\Device\HarddiskVolume1\Windows\System32\svchost.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671\Software\Microsoft\Windows\CurrentVersion\Internet Settings
+Process 1336 (\Device\HarddiskVolume1\Windows\System32\svchost.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671\Software\Microsoft\Internet Explorer\Main\FeatureControl
+Process 1336 (\Device\HarddiskVolume1\Windows\System32\svchost.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings
+Process 664 (\Device\HarddiskVolume1\Windows\System32\lsass.exe) has opened key \REGISTRY\USER\S-1-5-21-1891001166-591912374-1976076072-11671\Software\Microsoft\SystemCertificates\Disallowed
+</td></tr> <tr><td>23/10/2018 00:09:06</td><td>3036</td><td>Warning</td><td>Microsoft-Windows-Search</td><td>The content source &lt;mapi15://{S-1-5-21-1891001166-591912374-1976076072-11671}/&gt; cannot be accessed.
+
+Context:  Application, SystemIndex Catalog
+
+Details:
+	A server error occurred. Check that the server is available.  (HRESULT : 0x80041206) (0x80041206)
+</td></tr> <tr><td>22/10/2018 21:23:35</td><td>10005</td><td>Error</td><td>MsiInstaller</td><td>Product: ShapeChef -- PowerPoint must be closed to install ShapeChef.</td></tr> <tr><td>22/10/2018 21:09:06</td><td>3036</td><td>Warning</td><td>Microsoft-Windows-Search</td><td>The content source &lt;mapi15://{S-1-5-21-1891001166-591912374-1976076072-11671}/&gt; cannot be accessed.
+
+Context:  Application, SystemIndex Catalog
+
+Details:
+	A server error occurred. Check that the server is available.  (HRESULT : 0x80041206) (0x80041206)
+</td></tr> <tr><td>22/10/2018 20:09:05</td><td>3036</td><td>Warning</td><td>Microsoft-Windows-Search</td><td>The content source &lt;mapi15://{S-1-5-21-1891001166-591912374-1976076072-11671}/&gt; cannot be accessed.
+
+Context:  Application, SystemIndex Catalog
+
+Details:
+	A server error occurred. Check that the server is available.  (HRESULT : 0x80041206) (0x80041206)
+</td></tr> </table><h2>Process Usage</h2> <table> <colgroup><col/><col/><col/></colgroup> <tr><th>Name</th><th>PrivateMemorySize</th><th>ProcessName</th></tr> <tr><td>pwsh</td><td>309796864</td><td>pwsh</td></tr> <tr><td>lync</td><td>255655936</td><td>lync</td></tr> <tr><td>svchost</td><td>230965248</td><td>svchost</td></tr> <tr><td>phions</td><td>226041856</td><td>phions</td></tr> <tr><td>Code</td><td>195117056</td><td>Code</td></tr> <tr><td>chrome</td><td>193581056</td><td>chrome</td></tr> <tr><td>OUTLOOK</td><td>170094592</td><td>OUTLOOK</td></tr> <tr><td>MsMpEng</td><td>164388864</td><td>MsMpEng</td></tr> <tr><td>chrome</td><td>138403840</td><td>chrome</td></tr> <tr><td>googledrivesync</td><td>135434240</td><td>googledrivesync</td></tr> </table>
 <table>
 </table>
 </body></html>

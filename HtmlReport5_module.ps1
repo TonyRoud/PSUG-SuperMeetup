@@ -1,12 +1,16 @@
 Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
 
-# Using module pshtmltable
+Remove-Variable HTML
+
+$HTML = ""
+
+# Example using module pshtmltable
 
 #get processes to work with
 $processes = Get-Process
 
 #Build HTML header
-$HTML = New-HTMLHead -title "Process details"
+$HTML = New-HTMLHead -title "Environment Health"
 
 #Add CPU time section with top 10 PrivateMemorySize processes.  This example does not highlight any particular cells
 $HTML += "<h3>Process Private Memory Size</h3>"
@@ -32,7 +36,7 @@ $HTML += "<h3>Process Handles</h3>"
 $HTML += $handleHTML
 
 #gather 20 events from the system log and pick out a few properties
-$events = (Get-WinEvent -LogName System -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
+$events = (Get-WinEvent -LogName Application -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
     Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -First 10
 
 #Create the HTML table without alternating rows, colorize Warning and Error messages, highlighting the whole row.
@@ -43,5 +47,5 @@ $HTML += "<h3>System Warning Events</h3>"
 $HTML += $eventTable | Close-HTML
 
 # Add content to file and open in browser
-Set-Content .\report_3.htm $HTML
-Invoke-Item .\report_3.htm
+Set-Content .\report_5.htm $HTML
+Invoke-Item .\report_5.htm

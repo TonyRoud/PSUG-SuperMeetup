@@ -1,9 +1,14 @@
 Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
 
+Remove-Variable HTML
+
+# Example using manually generated HTML
+
 $date = Get-Date -Format f
 $HTML = ""
 
 $style = @"
+<title>Environment Health Report</title>
 <style>
 body {
     color:#333333;
@@ -31,7 +36,7 @@ p {
 #table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 80%;
+    width: 70%;
     align: center;
 }
 #table th {
@@ -47,13 +52,6 @@ p {
     padding: 8px;
 }
 #table tr:hover {background-color: rgb(236, 234, 234);}
-#table tr.red {
-    border: 1px solid #e4e4e4;
-    font-weight:bold;
-    text-align: center;
-    color:rgb(255, 14, 14);
-    background-color:rgb(253, 237, 237);
-}
 #table tr td.red {
     border: 1px solid #e4e4e4;
     font-weight:bold;
@@ -80,10 +78,9 @@ p {
 "@
 
 $HTML += "<h1>Environment Health Report</h1><h3>$date</h3>"
-
 $HTML += '<h2>Critical and Warning Events</h2>'
 
-$events = (Get-WinEvent -LogName System -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
+$events = (Get-WinEvent -LogName Application -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level}) |
     Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -first 10
 
 $HTML += @"
@@ -99,12 +96,8 @@ $HTML += @"
 
 Foreach ($evt in $events){
 
-    $class = ""
-
-    if ($evt.LevelDisplayName -match 'Error'){ $Class = ' Class="red"' }
-
     $HTML += @"
-    <tr$class>
+    <tr>
         <td>$($evt.TimeCreated)</td>
         <td>$($evt.ID)</td>
         <td>$($evt.LevelDisplayName)</td>
@@ -129,26 +122,17 @@ $HTML += @"
 "@
 
 Foreach ($process in $processes){
-
-    $class = ""
-
-    if ($process.PrivateMemorySize -gt 300000000){ $Class = ' Class="yellow"' }
-    if ($process.PrivateMemorySize -gt 350000000){ $Class = ' Class="red"' }
-
     $HTML += @"
     <tr>
         <td>$($process.Name)</td>
         <td>$($process.ProcessName)</td>
-        <td$class>$($process.PrivateMemorySize)</td>
+        <td>$($process.PrivateMemorySize)</td>
     </tr>
 "@
 }
 
 $HTML += "</table>"
 
-ConvertTo-Html -Body $HTML -Head $style | out-file .\report_2.htm -force
+ConvertTo-Html -Body $HTML -Head $style | out-file report_3.htm -force
 
-Invoke-Item .\report_2.htm
-
-# Example report fleshed out with additional tables and data
-# Invoke-Item .\example_report_full.html
+Invoke-Item .\report_3.htm
