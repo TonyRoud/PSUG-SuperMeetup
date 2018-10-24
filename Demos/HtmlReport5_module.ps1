@@ -46,5 +46,5 @@ $HTML += "<h3>System Warning Events</h3>"
 $HTML += $eventTable | Close-HTML
 
 # Add content to file and open in browser
-Set-Content ExampleReports\report_5.htm $HTML
-Invoke-Item ExampleReports\report_5.htm
+Set-Content ExampleReports\html_module_1.htm $HTML
+Invoke-Item ExampleReports\html_module_1.htm

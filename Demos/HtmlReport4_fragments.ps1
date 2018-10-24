@@ -106,6 +106,6 @@ for ($i=1; $i -le $table2.table.tr.count-1; $i++){
 
 $HTML += $($table2.InnerXml)
 
-ConvertTo-Html -Body $HTML -Head $style | out-file ExampleReports\report_2.htm -force
+ConvertTo-Html -Body $HTML -Head $style | out-file ExampleReports\html_fragments_2.htm -force
 
-Invoke-Item ExampleReports\report_2.htm
+Invoke-Item ExampleReports\html_fragments_2.htm
