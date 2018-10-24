@@ -1,6 +1,7 @@
 Remove-Variable HTML -ErrorAction SilentlyContinue
 
 # Example using module pshtmltable - Warren Frame - https://github.com/RamblingCookieMonster/PSHTMLTable
+# Requires module pshtmltable
 
 $HTML = ""
 

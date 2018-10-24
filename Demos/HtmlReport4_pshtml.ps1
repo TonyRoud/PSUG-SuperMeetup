@@ -1,4 +1,5 @@
 # Example using pshtml - Stephane Van Gulick / https://github.com/Stephanevg/PSHTML
+# Requires module pshtml
 
 $proc = Get-Process | Select-Object -First 10 Id, Name, Handles, StartTime, WorkingSet
 
