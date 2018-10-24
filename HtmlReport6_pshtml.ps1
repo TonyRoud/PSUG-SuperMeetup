@@ -10,6 +10,6 @@ html {
         style { $css }
     }
     body { ConvertTo-HTMLtable -Object $proc }
-}  | Out-File .\report_6.htm
+}  | Out-File ExampleReports\report_6.htm
 
-Invoke-Item .\report_6.htm
+Invoke-Item ExampleReports\report_6.htm

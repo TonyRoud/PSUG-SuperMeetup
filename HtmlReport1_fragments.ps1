@@ -89,6 +89,6 @@ $processes = Get-Process | Sort-Object PrivateMemorySize -Descending | Select-Ob
 $HTML += $processes | ConvertTo-Html -Fragment -PreContent "<h2>Process Usage</h2>"
 
 # Convert all to HTML in one go and output to file
-ConvertTo-Html -Body $HTML -Head $style | out-file report_1.htm -force
+ConvertTo-Html -Body $HTML -Head $style | out-file ExampleReports\report_1.htm -force
 
-Invoke-Item .\report_1.htm
+Invoke-Item ExampleReports\report_1.htm

@@ -1,4 +1,4 @@
-Set-Location 'C:\Users\anthony.roud\Documents\htmltest'
+Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
 
 Remove-Variable HTML -ErrorAction SilentlyContinue
 
@@ -107,6 +107,6 @@ for ($i=1; $i -le $table2.table.tr.count-1; $i++){
 
 $HTML += $($table2.InnerXml)
 
-ConvertTo-Html -Body $HTML -Head $style | out-file report_2.htm -force
+ConvertTo-Html -Body $HTML -Head $style | out-file ExampleReports\report_2.htm -force
 
-Invoke-Item .\report_2.htm
+Invoke-Item ExampleReports\report_2.htm

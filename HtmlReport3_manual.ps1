@@ -133,6 +133,6 @@ Foreach ($process in $processes){
 
 $HTML += "</table>"
 
-ConvertTo-Html -Body $HTML -Head $style | out-file report_3.htm -force
+ConvertTo-Html -Body $HTML -Head $style | out-file ExampleReports\report_3.htm -force
 
-Invoke-Item .\report_3.htm
+Invoke-Item ExampleReports\report_3.htm

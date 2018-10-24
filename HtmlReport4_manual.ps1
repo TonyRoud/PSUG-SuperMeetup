@@ -153,7 +153,7 @@ $HTML += "</table>"
 
 ConvertTo-Html -Body $HTML -Head $style | out-file .\report_4.htm -force
 
-Invoke-Item .\report_4.htm
+Invoke-Item ExampleReports\report_4.htm
 
 # Example report fleshed out with additional tables and data
-# Invoke-Item .\report_5_full.html
+# Invoke-Item ExampleReports\report_4_full.html
