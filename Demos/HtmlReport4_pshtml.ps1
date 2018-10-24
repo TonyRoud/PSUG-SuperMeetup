@@ -1,5 +1,3 @@
-Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup\Demos"
-
 # Example using pshtml - Stephane Van Gulick / https://github.com/Stephanevg/PSHTML
 
 $proc = Get-Process | Select-Object -First 10 Id, Name, Handles, StartTime, WorkingSet
