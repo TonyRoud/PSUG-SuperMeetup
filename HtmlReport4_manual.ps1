@@ -1,6 +1,6 @@
 Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
 
-Remove-Variable HTML
+Remove-Variable HTML -ErrorAction SilentlyContinue
 
 # Example using manually generated HTML with conditional formatting
 
@@ -137,8 +137,8 @@ Foreach ($process in $processes){
 
     $class = ""
 
-    if ($process.PrivateMemorySize -gt 300000000){ $Class = ' Class="yellow"' }
-    if ($process.PrivateMemorySize -gt 350000000){ $Class = ' Class="red"' }
+    if ($process.PrivateMemorySize -gt 200000000){ $Class = ' Class="yellow"' }
+    if ($process.PrivateMemorySize -gt 300000000){ $Class = ' Class="red"' }
 
     $HTML += @"
     <tr>
@@ -156,4 +156,4 @@ ConvertTo-Html -Body $HTML -Head $style | out-file .\report_4.htm -force
 Invoke-Item .\report_4.htm
 
 # Example report fleshed out with additional tables and data
-# Invoke-Item .\example_report_full.html
+# Invoke-Item .\report_5_full.html

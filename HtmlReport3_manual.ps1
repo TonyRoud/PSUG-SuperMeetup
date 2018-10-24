@@ -1,6 +1,6 @@
 Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
 
-Remove-Variable HTML
+Remove-Variable HTML -ErrorAction SilentlyContinue
 
 # Example using manually generated HTML
 

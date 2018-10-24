@@ -1,6 +1,6 @@
 Set-Location 'C:\Users\anthony.roud\Documents\htmltest'
 
-Remove-Variable HTML
+Remove-Variable HTML -ErrorAction SilentlyContinue
 
 # Example using ConvertTo-Html with conditional formatting
 
