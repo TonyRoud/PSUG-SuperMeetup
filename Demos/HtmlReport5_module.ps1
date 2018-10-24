@@ -35,8 +35,8 @@ $HTML += "<h3>Process Handles</h3>"
 $HTML += $handleHTML
 
 #gather 20 events from the system log and pick out a few properties
-$events = (Get-WinEvent -LogName System -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
-    Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -First 10
+$events = (Get-WinEvent -LogName System -MaxEvents 500).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level}) |
+    sort-object providername -unique | Sort-Object TimeCreated -Descending | Select-Object TimeCreated, ID, LevelDisplayName, ProviderName -First 10
 
 #Create the HTML table without alternating rows, colorize Warning and Error messages, highlighting the whole row.
 $eventTable = $events | New-HTMLTable -setAlternating $false |

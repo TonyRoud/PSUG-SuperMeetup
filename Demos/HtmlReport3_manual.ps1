@@ -1,7 +1,7 @@
 Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
 Remove-Variable HTML -ErrorAction SilentlyContinue
 
-# Example using manually generated HTML with conditional formatting
+# Example using manually generated HTML
 
 $date = Get-Date -Format f
 $HTML = ""
@@ -51,13 +51,6 @@ p {
     padding: 8px;
 }
 #table tr:hover {background-color: rgb(236, 234, 234);}
-#table tr.red {
-    border: 1px solid #e4e4e4;
-    font-weight:bold;
-    text-align: center;
-    color:rgb(255, 14, 14);
-    background-color:rgb(253, 237, 237);
-}
 #table tr td.red {
     border: 1px solid #e4e4e4;
     font-weight:bold;
@@ -84,11 +77,10 @@ p {
 "@
 
 $HTML += "<h1>Environment Health Report</h1><h3>$date</h3>"
-
 $HTML += '<h2>Critical and Warning Events</h2>'
 
-$events = (Get-WinEvent -LogName Application -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
-    Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -first 10
+$events = (Get-WinEvent -LogName System -MaxEvents 500).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level}) |
+    sort-object providername -unique | Sort-Object TimeCreated -Descending | Select-Object TimeCreated, ID, LevelDisplayName, ProviderName -First 10
 
 $HTML += @"
     <table id="table" align="center">
@@ -97,23 +89,17 @@ $HTML += @"
         <th>ID</th>
         <th>Level</th>
         <th>Provider</th>
-        <th>Message</th>
     </tr>
 "@
 
 Foreach ($evt in $events){
 
-    $class = ""
-
-    if ($evt.LevelDisplayName -match 'Error'){ $Class = ' Class="red"' }
-
     $HTML += @"
-    <tr$class>
+    <tr>
         <td>$($evt.TimeCreated)</td>
         <td>$($evt.ID)</td>
         <td>$($evt.LevelDisplayName)</td>
         <td>$($evt.ProviderName)</td>
-        <td>$($evt.Message)</td>
     </tr>
 "@
 }
@@ -133,26 +119,17 @@ $HTML += @"
 "@
 
 Foreach ($process in $processes){
-
-    $class = ""
-
-    if ($process.PrivateMemorySize -gt 200000000){ $Class = ' Class="yellow"' }
-    if ($process.PrivateMemorySize -gt 300000000){ $Class = ' Class="red"' }
-
     $HTML += @"
     <tr>
         <td>$($process.Name)</td>
         <td>$($process.ProcessName)</td>
-        <td$class>$($process.PrivateMemorySize)</td>
+        <td>$($process.PrivateMemorySize)</td>
     </tr>
 "@
 }
 
 $HTML += "</table>"
 
-ConvertTo-Html -Body $HTML -Head $style | out-file .\report_4.htm -force
+ConvertTo-Html -Body $HTML -Head $style | out-file ExampleReports\report_3.htm -force
 
-Invoke-Item ExampleReports\report_4.htm
-
-# Example report fleshed out with additional tables and data
-# Invoke-Item ExampleReports\report_4_full.html
+Invoke-Item ExampleReports\report_3.htm

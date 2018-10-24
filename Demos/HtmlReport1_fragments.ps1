@@ -75,8 +75,8 @@ table tr td.blank {
 $HTML += "<h1>Environment Health Report</h1><h3>$date</h3>"
 
 # Capture events to variable and filter down to key info before converting
-$events = (Get-WinEvent -LogName Application -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
-    Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -first 10
+$events = (Get-WinEvent -LogName System -MaxEvents 500).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level}) |
+    sort-object providername -unique | Sort-Object TimeCreated -Descending | Select-Object TimeCreated, ID, LevelDisplayName, ProviderName -First 10
 
 # Convert to HTML and capture as XML for formatting
 $HTML += $events | ConvertTo-Html -Fragment -PreContent '<h2>Critical and Warning Events</h2>'

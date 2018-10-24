@@ -64,8 +64,8 @@ table tr:hover {background-color: rgb(236, 234, 234);}
 $HTML += "<h1>Environment Health Report</h1><h3>$date</h3>"
 $HTML += '<h2>Critical and Warning Events</h2>'
 
-$events = (Get-WinEvent -LogName Application -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
-    Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -first 10
+$events = (Get-WinEvent -LogName System -MaxEvents 500).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level}) |
+    sort-object providername -unique | Sort-Object TimeCreated -Descending | Select-Object TimeCreated, ID, LevelDisplayName, ProviderName -First 10
 
 # Convert to HTML and capture as XML for formatting
 [xml]$table1 = $events | ConvertTo-Html -Fragment
@@ -98,7 +98,7 @@ for ($i=1; $i -le $table2.table.tr.count-1; $i++){
         $class.value = "red"
         $table2.table.tr[$i].Attributes.Append($class) | Out-Null
     }
-    elseif (($table2.table.tr[$i].td[1] -as [int]) -ge 200000000){
+    elseif (($table2.table.tr[$i].td[1] -as [int]) -ge 250000000){
         $class.value = "yellow"
         $table2.table.tr[$i].Attributes.Append($class) | Out-Null
     }
