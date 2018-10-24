@@ -1,4 +1,4 @@
-Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
+Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup\Demos"
 
 # Example using pshtml - Stephane van Gulick / https://github.com/Stephanevg/PSHTML
 

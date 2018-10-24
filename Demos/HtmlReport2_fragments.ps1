@@ -1,4 +1,4 @@
-Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
+Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup\Demos"
 Remove-Variable HTML -ErrorAction SilentlyContinue
 
 # Example using ConvertTo-Html with conditional formatting
