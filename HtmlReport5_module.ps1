@@ -1,10 +1,9 @@
 Set-Location "C:\Users\$env:username\OneDrive\Documents\PowerShell\PSUG\SuperMeetup"
-
 Remove-Variable HTML -ErrorAction SilentlyContinue
 
-$HTML = ""
+# Example using module pshtmltable - Warren Frame - https://github.com/RamblingCookieMonster/PSHTMLTable
 
-# Example using module pshtmltable
+$HTML = ""
 
 #get processes to work with
 $processes = Get-Process
@@ -36,7 +35,7 @@ $HTML += "<h3>Process Handles</h3>"
 $HTML += $handleHTML
 
 #gather 20 events from the system log and pick out a few properties
-$events = (Get-WinEvent -LogName Application -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
+$events = (Get-WinEvent -LogName System -MaxEvents 200).Where({$level = 'Warning','Error'; $_.LevelDisplayName -in $level -and $_.Message -notmatch 'domain'}) |
     Select-Object TimeCreated, ID, LevelDisplayName, ProviderName, Message -First 10
 
 #Create the HTML table without alternating rows, colorize Warning and Error messages, highlighting the whole row.
