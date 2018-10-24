@@ -92,7 +92,7 @@ $processes = Get-Process | Sort-Object PrivateMemorySize -Descending | Select-Ob
 for ($i=1; $i -le $table2.table.tr.count-1; $i++){
     $class = $table2.CreateAttribute("class")
 
-    # Check the value of colum 3 and apply a class to the row if 'Error'
+    # Check the value of colum 3 and apply a class to the row if over threshold
     if (($table2.table.tr[$i].td[1] -as [int]) -ge 300000000){
         $class.value = "red"
         $table2.table.tr[$i].Attributes.Append($class) | Out-Null
