@@ -1,6 +1,6 @@
 Remove-Variable HTML -ErrorAction SilentlyContinue
 
-# Example using ConvertTo-Html with conditional formatting
+# Example using ConvertTo-Html with -fragment parameter
 
 $date = Get-Date -Format f
 $HTML = ""
